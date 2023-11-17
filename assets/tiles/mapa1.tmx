@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="30">
  <tileset firstgid="1" source="tilemap1_32.tsx"/>
  <layer id="1" name="suelos" width="50" height="40">
   <data encoding="csv">
@@ -45,4 +45,74 @@
 29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="3" name="estrellas" visible="0">
+  <object id="5" x="662.056" y="288.829">
+   <point/>
+  </object>
+  <object id="6" x="733.326" y="335.717">
+   <point/>
+  </object>
+  <object id="7" x="793.342" y="388.231">
+   <point/>
+  </object>
+  <object id="8" x="840.23" y="431.368">
+   <point/>
+  </object>
+  <object id="9" x="885.242" y="502.637">
+   <point/>
+  </object>
+  <object id="10" x="958.387" y="573.907">
+   <point/>
+  </object>
+  <object id="11" x="1037.16" y="635.799">
+   <point/>
+  </object>
+  <object id="12" x="1117.81" y="669.558">
+   <point/>
+  </object>
+  <object id="13" x="1329.74" y="345.094">
+   <point/>
+  </object>
+  <object id="14" x="842.105" y="919.001">
+   <point/>
+  </object>
+  <object id="15" x="298.207" y="890.869">
+   <point/>
+  </object>
+  <object id="16" x="360.098" y="892.744">
+   <point/>
+  </object>
+  <object id="17" x="442.621" y="887.118">
+   <point/>
+  </object>
+  <object id="18" x="519.517" y="885.242">
+   <point/>
+  </object>
+  <object id="22" x="577.658" y="883.367">
+   <point/>
+  </object>
+  <object id="23" x="641.425" y="890.869">
+   <point/>
+  </object>
+  <object id="24" x="133.161" y="360.098">
+   <point/>
+  </object>
+  <object id="25" x="1517.29" y="624.546">
+   <point/>
+  </object>
+  <object id="26" x="1187.2" y="1050.29">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="gotas">
+  <object id="27" x="553.276" y="894.62">
+   <point/>
+  </object>
+  <object id="28" x="1217.21" y="652.678">
+   <point/>
+  </object>
+  <object id="29" x="669.558" y="283.202">
+   <point/>
+  </object>
+ </objectgroup>
 </map>
