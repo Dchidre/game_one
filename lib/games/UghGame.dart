@@ -3,13 +3,15 @@ import 'dart:ui';
 
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'package:ugh2/elementos/Gota.dart';
 
 import '../elementos/Estrella.dart';
 import '../players/EmberPlayer.dart';
 
-class UghGame extends FlameGame{
+class UghGame extends FlameGame with HasKeyboardHandlerComponents{
 
   final world = World();
   late final CameraComponent cameraComponent;
@@ -28,7 +30,6 @@ class UghGame extends FlameGame{
       'reading.png',
       'tilemap1_32.png'
     ]);
-
     cameraComponent = CameraComponent(world: world);
     // Everything in this tutorial assumes that the position
     // of the `CameraComponent`s viewfinder (where the camera is looking)
@@ -42,8 +43,17 @@ class UghGame extends FlameGame{
     ObjectGroup? estrellas=mapComponent.tileMap.getLayer<ObjectGroup>("estrellas");
 
     for(final estrella in estrellas!.objects){
-      Estrella spriteStar = Estrella(position: Vector2(estrella.x,estrella.y));
+      Estrella spriteStar = Estrella(position: Vector2(estrella.x,estrella.y),
+      size: Vector2.all(64));
       add(spriteStar);
+    }
+
+    ObjectGroup? gotas=mapComponent.tileMap.getLayer<ObjectGroup>("gotas");
+
+    for(final gota in gotas!.objects){
+      Gota spriteGota = Gota(position: Vector2(gota.x,gota.y),
+          size: Vector2.all(64));
+      add(spriteGota);
     }
 
     _player = EmberPlayer(position: Vector2(128, canvasSize.y - 150),
