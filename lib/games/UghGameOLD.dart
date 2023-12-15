@@ -11,7 +11,7 @@ import 'package:ugh2/elementos/Gota.dart';
 import '../elementos/Estrella.dart';
 import '../players/EmberPlayer.dart';
 
-class UghGameGrav extends FlameGame with HasKeyboardHandlerComponents{
+class UghGameOLD extends FlameGame with HasKeyboardHandlerComponents{
 
   final world = World();
   late final CameraComponent cameraComponent;
@@ -56,9 +56,9 @@ class UghGameGrav extends FlameGame with HasKeyboardHandlerComponents{
       add(spriteGota);
     }
 
-    _player = EmberPlayer(position: Vector2(128, canvasSize.y - 150,),
+    /*_player = EmberPlayer(position: Vector2(128, canvasSize.y - 150,),
       iTipo: EmberPlayer.I_PLAYER_TANYA,
-    );
+    );*/
 
     //_player2 = EmberPlayer(position: Vector2(328, canvasSize.y - 150),);
 

@@ -6,18 +6,22 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'package:ugh2/bodies/TierraBody.dart';
 import 'package:ugh2/elementos/Gota.dart';
 
 import '../configs/config.dart';
 import '../elementos/Estrella.dart';
 import '../players/EmberPlayer.dart';
+import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:flame_forge2d/forge2d_game.dart';
 
-class UghGame extends FlameGame with
+
+class UghGame extends Forge2DGame with
     HasKeyboardHandlerComponents,HasCollisionDetection{
 
-  final world = World();
+  //final world = World();
   late final CameraComponent cameraComponent;
-  late EmberPlayer _player,_player2;
+  late EmberPlayerBody _player,_player2;
   late TiledComponent mapComponent;
 
   double wScale=1.0,hScale=1.0;
@@ -77,13 +81,22 @@ class UghGame extends FlameGame with
       add(spriteGota);
     }
 
-    _player = EmberPlayer(position: Vector2(128, canvasSize.y - 150,),
-      iTipo: EmberPlayer.I_PLAYER_TANYA,
+    ObjectGroup? tierras=mapComponent.tileMap.getLayer<ObjectGroup>("tierra");
+
+    for(final tiledObjectTierra in tierras!.objects){
+      TierraBody tierraBody = TierraBody(tiledBody: tiledObjectTierra,
+          scales: Vector2(wScale,hScale));
+      add(tierraBody);
+    }
+
+    _player = EmberPlayerBody(initialPosition: Vector2(128, canvasSize.y - 350,),
+      iTipo: EmberPlayerBody.I_PLAYER_TANYA,tamano: Vector2(50,100)
     );
 
     //_player2 = EmberPlayer(position: Vector2(328, canvasSize.y - 150),);
 
-    world.add(_player);
+    add(_player);
+    //add(EmberPlayerBody(vector2Tamano: Vector2(40, 40,)));
     //camera.viewport = FixedResolutionViewport(resolution: Vector2(600, 300));
     //world.add(_player2);
   }
