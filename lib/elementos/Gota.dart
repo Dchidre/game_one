@@ -1,4 +1,6 @@
 
+import 'dart:ui';
+
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
@@ -11,6 +13,7 @@ class Gota extends SpriteAnimationComponent
     required super.position, required super.size
   }) : super(anchor: Anchor.center);
 
+  late ShapeHitbox hitbox;
 
   @override
   Future<void> onLoad() async{
@@ -26,7 +29,15 @@ class Gota extends SpriteAnimationComponent
       ),
     );
 
+       final defaultPaint = Paint()
+          ..color = DefaultSelectionStyle.defaultColor
+          ..style = PaintingStyle.stroke;
 
+        hitbox = RectangleHitbox()
+          ..paint = defaultPaint
+          ..isSolid = true
+          ..renderShape = false; // Muestra el cuadrado del area en el que colision
+        add(hitbox);
 
     return super.onLoad();
   }

@@ -24,7 +24,6 @@ class TierraBody extends BodyComponent{
 
     late FixtureDef fixtureDef;
 
-
     if(tiledBody.isRectangle){
       PolygonShape shape=PolygonShape();
       final vertices = [
@@ -36,8 +35,6 @@ class TierraBody extends BodyComponent{
       shape.set(vertices);
       fixtureDef=FixtureDef(shape);
     }
-
-
     else if(tiledBody.isPolygon){
       ChainShape shape = ChainShape();
       List<Vector2> vertices = [];

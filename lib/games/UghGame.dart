@@ -2,12 +2,14 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flame/camera.dart';
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:ugh2/bodies/TierraBody.dart';
 import 'package:ugh2/elementos/Gota.dart';
+import 'package:ugh2/players/EmberPlayer2.dart';
 
 import '../configs/config.dart';
 import '../elementos/Estrella.dart';
@@ -17,11 +19,12 @@ import 'package:flame_forge2d/forge2d_game.dart';
 
 
 class UghGame extends Forge2DGame with
-    HasKeyboardHandlerComponents,HasCollisionDetection{
+    HasKeyboardHandlerComponents,HasCollisionDetection, CollisionCallbacks{
 
   //final world = World();
   late final CameraComponent cameraComponent;
-  late EmberPlayerBody _player,_player2;
+  late EmberPlayerBody _player;
+  late EmberPlayerBody2 _player2;
   late TiledComponent mapComponent;
 
   double wScale=1.0,hScale=1.0;
@@ -38,27 +41,9 @@ class UghGame extends Forge2DGame with
       'tilemap1_32.png'
     ]);
     cameraComponent = CameraComponent(world: world);
-    //cameraComponent = CameraComponent(world: world);
-    /*cameraComponent = CameraComponent.withFixedResolution(
-      width: gameWidth,
-      height: gameHeight,
-    );*/
     wScale=size.x/gameWidth;
     hScale=size.y/gameHeight;
 
-    print("RESOLUCION IDEAL: ${gameWidth} x ${gameHeight}");
-    print("RESOLUCION MI PANTALLA: ${size.x} x ${size.y}");
-    print("LA ESCALA SERIA: ${wScale} x ${hScale}");
-
-
-    /*final cameraComponent = CameraComponent.withFixedResolution(
-      world: world,
-      width: 900,
-      height: 600,
-    );*/
-    // Everything in this tutorial assumes that the position
-    // of the `CameraComponent`s viewfinder (where the camera is looking)
-    // is in the top left corner, that's why we set the anchor here.
     cameraComponent.viewfinder.anchor = Anchor.topLeft;
     addAll([cameraComponent, world]);
 
@@ -93,12 +78,12 @@ class UghGame extends Forge2DGame with
       iTipo: EmberPlayerBody.I_PLAYER_TANYA,tamano: Vector2(50,100)
     );
 
-    //_player2 = EmberPlayer(position: Vector2(328, canvasSize.y - 150),);
+    _player2 = EmberPlayerBody2(initialPosition: Vector2(200, canvasSize.y - 350,),
+        iTipo: EmberPlayerBody2.I_PLAYER_TANYA,tamano: Vector2(50,50)
+    );
 
     add(_player);
-    //add(EmberPlayerBody(vector2Tamano: Vector2(40, 40,)));
-    //camera.viewport = FixedResolutionViewport(resolution: Vector2(600, 300));
-    //world.add(_player2);
+    add(_player2);
   }
   
   @override
