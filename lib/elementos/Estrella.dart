@@ -28,7 +28,7 @@ class Estrella extends SpriteComponent
     hitbox = RectangleHitbox()
       ..paint = defaultPaint
       ..isSolid=true
-      ..renderShape = true;
+      ..renderShape = false;
     add(hitbox);
 
     return super.onLoad();

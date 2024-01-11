@@ -50,9 +50,14 @@ class EmberPlayerBody2 extends BodyComponent with KeyboardHandler{
   final _defaultColor = Colors.red;
   late EmberPlayer2 emberPlayer2;
   late double jumpSpeed=0.0;
+  final UghGame gameRef;
 
-  EmberPlayerBody2({Vector2? initialPosition,required this.iTipo,
-    required this.tamano})
+  EmberPlayerBody2({
+    Vector2? initialPosition,
+    required this.iTipo,
+    required this.tamano,
+    required this.gameRef,
+  })
       : super(
     fixtureDefs: [
       FixtureDef(
@@ -93,6 +98,11 @@ class EmberPlayerBody2 extends BodyComponent with KeyboardHandler{
     else if(keysPressed.contains(LogicalKeyboardKey.arrowRight)){horizontalDirection=1;}
     if(keysPressed.contains(LogicalKeyboardKey.arrowUp)){verticalDirection=-1;}
     else if(keysPressed.contains(LogicalKeyboardKey.arrowDown)){verticalDirection=1;}
+    if (event is RawKeyDownEvent) {
+      if (event.logicalKey == LogicalKeyboardKey.digit5) {
+        gameRef.toggleWorldGravity();
+      }
+    }
 
     return true;
   }
@@ -104,7 +114,6 @@ class EmberPlayerBody2 extends BodyComponent with KeyboardHandler{
     velocidad.y = verticalDirection * aceleracion;
     velocidad.y += -1 * jumpSpeed;
 
-    print("--------->>>>>>>>> ${velocidad}");
     body.applyLinearImpulse(velocidad*dt*1000);
 
     if (horizontalDirection < 0 && emberPlayer2.scale.x > 0) {
