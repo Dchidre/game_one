@@ -1,0 +1,37 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "assets/tiles/maponcio.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "assets/tiles/el_patron.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "assets/tiles/maponcio.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 819,
+                "y": 441
+            }
+        }
+    },
+    "last.imagePath": "C:/Users/david/StudioProjects/game_one/assets/images",
+    "map.height": 40,
+    "map.lastUsedFormat": "tmx",
+    "map.width": 50,
+    "openFiles": [
+        "assets/tiles/el_patron.tsx",
+        "assets/tiles/maponcio.tmx"
+    ],
+    "project": "custom_map.tiled-project",
+    "recentFiles": [
+        "assets/tiles/el_patron.tsx",
+        "assets/tiles/maponcio.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
